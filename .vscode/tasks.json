@@ -1,0 +1,31 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Clean",
+            "type": "shell",
+            // Use a cloned Docker container instead of the espressif/idf Docker container because the espressif
+            // tags keep changing. Tags are consistent, they should not change!
+            "command": "docker run --rm -v \"$(pwd):/project\" -w /project bduncanltd/esp-idf:release-v5.1 idf.py fullclean",
+            "group": "build",
+            "problemMatcher": [],
+            "presentation": {
+                "focus": true,
+            },
+        },
+        {
+            "label": "Build",
+            "type": "shell",
+            // Use a cloned Docker container instead of the espressif/idf Docker container because the espressif
+            // tags keep changing. Tags are consistent, they should not change!
+            "command": "docker run --rm -v \"$(pwd):/project\" -w /project bduncanltd/esp-idf:release-v5.1 idf.py build",
+            "group": "build",
+            "problemMatcher": [],
+            "presentation": {
+                "focus": true,
+            },
+        },
+    ]
+}
